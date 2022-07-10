@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "commander": "^9.3.0",
-    "js-md5": "^0.7.3"
+    "js-md5": "^0.7.3",
+    "wet-tool": "^1.0.1"
   },
   "repository": {
     "type": "git",
