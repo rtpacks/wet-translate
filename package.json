@@ -1,6 +1,6 @@
 {
   "name": "wet-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "wet控制台快速翻译",
   "author": "azin-cn",
   "license": "ISC",
@@ -21,8 +21,7 @@
   },
   "dependencies": {
     "commander": "^9.3.0",
-    "js-md5": "^0.7.3",
-    "wet-tool": "^1.0.1"
+    "js-md5": "^0.7.3"
   },
   "repository": {
     "type": "git",

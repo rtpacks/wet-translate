@@ -55,7 +55,7 @@ function handle(Incoming) {
       return words
     }, ['','']);
     const o = 
-      '\x1B[43m 原文 ' + 
+      '\x1B[43;30m 原文 ' + 
       '\x1B[40;33m ' + origin
     const r = 
       '\033[42;30m ' + from + ' To ' + to + ' ' +
