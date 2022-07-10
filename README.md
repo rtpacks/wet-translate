@@ -73,7 +73,7 @@ $ wet 未来 -D wyw
 - youdao
 - google
 
-等等
+欢迎给我提issue
 
 ## 参考
 
