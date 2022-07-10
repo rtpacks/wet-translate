@@ -1,17 +1,9 @@
-#!/usr/bin/env -u=DEBUG node
+#!/usr/bin/env node
 
-import { Command } from "commander";
-import md5 from "js-md5";
+const { Command } = require("commander");
 
-import { translate } from "./src/core";
-import pack from "./package.json" assert{type: 'json'}
-import {
-  slat, 
-  appid, 
-  secret, 
-  api
-} from './src/lib'
-
+const { translate } = require("./src/core/index.js");
+const pack = require("./package.json");
 
 const program = new Command();
 const version = pack.version;
@@ -29,8 +21,7 @@ program
   .argument("<words...>", "Translate words 翻译词句")
   .option("-D --dest <dest>", "翻译到指定语言 -D CN")
   .action((words, { dest }) => {
-    const sign = md5(`${appid}${words}${slat}${secret}`);
-    translate(sign, words, dest);
+    translate(words, dest);
   });
 
 program.parse(argv);

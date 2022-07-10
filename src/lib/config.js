@@ -1,12 +1,12 @@
-import config from '../../wet.config.json' assert {type: 'json'}
+const config = require('../../wet.config.json')
 
-const {servicer, slat} = config;
+const {servicer, salt} = config;
 const { appid, secret, api } = config[servicer];
 
-export {
+module.exports = {
   config,
   servicer,
-  slat,
+  salt,
   appid,
   secret,
   api

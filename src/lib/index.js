@@ -1,8 +1,8 @@
-export {
+module.exports = {
   config,
   servicer,
-  slat,
+  salt,
   appid,
   secret,
   api
-} from './config.js'
+} = require('./config.js')

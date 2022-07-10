@@ -1,4 +1,4 @@
-import translate from "./translate";
-export {
+const translate = require("./translate.js")
+module.exports = {
   translate
 }
