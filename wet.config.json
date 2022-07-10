@@ -1,0 +1,10 @@
+{
+  "servicer": "BAIDU",
+  "slat": "azin-cn",
+
+  "BAIDU": {
+    "appid": "20210921000952000",
+    "secret": "7KIut5cwuDYzB6rC9MCj",
+    "api": "https://fanyi-api.baidu.com/api/trans/vip/translate"
+  }
+}
