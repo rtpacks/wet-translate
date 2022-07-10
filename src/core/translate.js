@@ -45,7 +45,7 @@ function handle(Incoming) {
     // console.log(res)
     const { error_code, trans_result, from, to } = res;
     if (error_code) {
-      console.warn('\033[5m WARN：翻译错误啦~')
+      console.warn('\033[41;30m WARN：翻译错误啦~')
       return;
     }
 
@@ -55,11 +55,11 @@ function handle(Incoming) {
       return words
     }, ['','']);
     const o = 
-      '\033[42;30m 原文' + 
-      '\033[40;32m ' + origin
+      '\x1B[43m 原文 ' + 
+      '\x1B[40;33m ' + origin
     const r = 
-      '\033[41;30m ' + from + ' To ' + to + ' ' +
-      '\033[40;31m' + translation
+      '\033[42;30m ' + from + ' To ' + to + ' ' +
+      '\033[40;32m ' + translation
     console.log(o+'\033[0m');
     console.log(r+'\033[0m');
   });
