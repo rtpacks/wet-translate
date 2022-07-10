@@ -8,7 +8,7 @@ VSCode的翻译插件还是挺好用的，但是只能翻译方向只能是英�
 
 ## 使用
 
-```shell
+```sh
 npm install wet-tool
 ```
 
@@ -26,7 +26,7 @@ npm install wet-tool
 
 ## 输出
 
-```shell
+```sh
 不指定翻译 默认 中译英 | 英译中
 $ wet hi hi hi hi hi hi hi hi
  	原文  hi hi hi hi hi hi hi hi
