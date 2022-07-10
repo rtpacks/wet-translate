@@ -1,0 +1,35 @@
+{
+  "name": "wet",
+  "version": "1.0.0",
+  "description": "wet控制台快速翻译",
+  "author": "azin-cn",
+  "license": "ISC",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "wet": "index.js"
+  },
+  "keywords": [
+    "wet",
+    "translation",
+    "翻译",
+    "控制台翻译",
+    "快速翻译",
+    "azin"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "commander": "^9.3.0",
+    "js-md5": "^0.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azin-cn/wet-translate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azin-cn/wet-translate/issues"
+  },
+  "homepage": "https://github.com/azin-cn/wet-translate#readme"
+}
