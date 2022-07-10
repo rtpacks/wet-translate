@@ -4,7 +4,7 @@ wet --》 we-translate
 
 VSCode的翻译插件还是挺好用的，但是只能翻译方向只能是英文到中文（也许我没发现）。
 
-变量想不出英文命名很难受，得重新打开有道或者浏览器翻译太麻烦了（尽量背单词），控制台/命令行是很好的平台能够提升效率，所以就有了wet。
+想不出变量的英文名称就难受，得重新打开有道或浏览器进行翻译，而控制台/命令行是非常棒的、能提升效率的平台，所以呢就有了wet。
 
 ## 使用示例
 
@@ -57,10 +57,10 @@ $ wet 未来 -D wyw
 ## 项目总结
 
 - http/https模块
-    - 注意IncomingMessage与Response的区别，发送者与接收者
-    - 发送者必须显式的调用end或者close函数进行关闭
-    - 模块内提供的get函数默认会调用close，所以Response类型的req变量可以不用手动关闭。
-    - IncomingMessage不一定是req，还可能是res，Response同理。
+  - 注意IncomingMessage与Response的区别，发送者与接收者
+  - 发送者必须显式的调用end或者close函数进行关闭
+  - 模块内提供的get函数默认会调用close，所以Response类型的req变量可以不用手动关闭。
+  - IncomingMessage不一定是req，还可能是res，Response同理。
 
 - qs.stringify()已经编码了，不要用encodeURL再次编码
 - console.log() 五彩斑斓的黑
