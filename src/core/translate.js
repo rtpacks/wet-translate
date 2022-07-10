@@ -19,7 +19,7 @@ module.exports = function translate(words = [], dest) {
     appid,
     sign,
     from: "auto",
-    to: dest || "zh",
+    to: dest || "auto", /* 默认 中译英 英译中 */
   });
 
   /* 发送网络请求 */
@@ -45,9 +45,10 @@ function handle(Incoming) {
     // console.log(res)
     const { error_code, trans_result, from, to } = res;
     if (error_code) {
-      console.warn(`%cWARN：调用翻译错误啦~`, "color: #DCAC7A");
+      console.warn('\033[5m WARN：翻译错误啦~')
       return;
     }
+
     const [origin, translation] = trans_result.reduce((words, word) => {
       words[0] += ' ' + word.src
       words[1] += ' ' + word.dst
