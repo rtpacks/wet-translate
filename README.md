@@ -8,7 +8,7 @@ VSCode的翻译插件还是挺好用的，但是只能翻译方向只能是英�
 
 ## 使用
 
-**`npm install wet-tool`**
+**`npm install -g wet-tool`**
 
 
 |         command命令          |     explanation解释      |
