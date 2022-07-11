@@ -6,6 +6,7 @@ const md5 = require("js-md5");
 const { salt, appid, api, secret } = require("../lib/index.js");
 
 const url = new URL(api);
+let client = null;
 
 module.exports = function translate(words = [], dest) {
   // 处理参数和url
@@ -19,7 +20,7 @@ module.exports = function translate(words = [], dest) {
     appid,
     sign,
     from: "auto",
-    to: dest || "auto", /* 默认 中译英 英译中 */
+    to: dest || "auto" /* 默认 中译英 英译中 */,
   });
 
   /* 发送网络请求 */
@@ -28,39 +29,49 @@ module.exports = function translate(words = [], dest) {
 
 function _translte(query) {
   url.search = query;
-  https.get(url.toString(), handle); /* 提供的get不需要手动关闭即end */
+  client = https.get(url.toString(), handle); /* 提供的get不需要手动关闭即end */
   // console.log(url.toString());
+  client.on("error", handleErrorForNetwork)
 }
 
 function handle(Incoming) {
   let res = "";
 
-  Incoming.on("data", (data) => {
-    // console.log(data.toString())
-    res += data.toString();
-  });
+  Incoming.on("data", (data) => (res += data.toString()));
 
   Incoming.on("close", () => {
     res = JSON.parse(res);
     // console.log(res)
     const { error_code, trans_result, from, to } = res;
-    if (error_code) {
-      console.warn('\033[41;30m WARN：翻译错误啦~')
-      return;
-    }
 
-    const [origin, translation] = trans_result.reduce((words, word) => {
-      words[0] += ' ' + word.src
-      words[1] += ' ' + word.dst
-      return words
-    }, ['','']);
-    const o = 
-      '\x1B[43;30m 原文 ' + 
-      '\x1B[40;33m ' + origin
-    const r = 
-      '\033[42;30m ' + from + ' To ' + to + ' ' +
-      '\033[40;32m ' + translation
-    console.log(o+'\033[0m');
-    console.log(r+'\033[0m');
+    error_code ? handleErrorForNative() : handleResult(trans_result, from, to);
+
+    /* 销毁 ClientRequest */
+    client = null;
   });
+}
+
+/* console.log中的样式不允许使用模板字符串 */
+const handleError = (err) => () => {
+  console.warn("\033[41;30m WARN：" + err + "\033[0m")
+  client = null
+}
+
+const handleErrorForNetwork = handleError("网络请求错误!");
+const handleErrorForNative = handleError("远程翻译错误啦~");
+
+function handleResult(trans_result, from, to) {
+  const [origin, translation] = trans_result.reduce(
+    (words, word) => {
+      words[0] += " " + word.src;
+      words[1] += " " + word.dst;
+      return words;
+    },
+    ["", ""]
+  );
+  const o = "\x1B[43;30m 原文 " + "\x1B[40;33m " + origin;
+  const r =
+    "\033[42;30m " + from + " To " + to + " " + "\033[40;32m " + translation;
+  console.log(o + "\033[0m");
+  console.log(r + "\033[0m");
 }
